@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meera's Bakery Online</title>
+  <style>
+    body{font-family:Segoe UI,Arial,sans-serif;margin:0;background:#fff7f0;color:#3b2a20}
+    header{background:#d94f70;color:#fff;padding:2rem;text-align:center}
+    main{max-width:720px;margin:2rem auto;padding:0 1rem}
+    .card{background:#fff;border-radius:12px;padding:1.2rem;margin:1rem 0;box-shadow:0 2px 8px #0001}
+    button{background:#d94f70;color:#fff;border:0;border-radius:8px;padding:.6rem 1rem;cursor:pointer}
+    code{background:#f3e5dc;padding:2px 6px;border-radius:4px}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎂 Meera's Bakery Online</h1>
+    <p>Fresh Cakes For Every Occasion</p>
+  </header>
+  <main>
+    <div class="card">
+      <h2>Deployed with AWS + DevOps 🚀</h2>
+      <p>If you can read this, your pipeline worked (GitHub Actions &rarr; AWS).</p>
+      <p>Change this file I changed the file, push to <code>main</code>, and watch the site update automatically.</p>
+    </div>
+    <div class="card">
+      <h3>API health</h3>
+      <button onclick="check()">Check /health</button>
+      <pre id="out">(click the button)</pre>
+    </div>
+  </main>
+  <script>
+    async function check(){
+      try{
+        const r = await fetch('/health');
+        document.getElementById('out').textContent = JSON.stringify(await r.json(), null, 2);
+      }catch(e){
+        document.getElementById('out').textContent = 'API not reachable (static-only hosting?)';
+      }
+    }
+  </script>
+</body>
+</html>

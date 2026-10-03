@@ -1,0 +1,7 @@
+{
+  "commands": [
+    "sudo dnf install -y httpd",
+    "sudo systemctl enable --now httpd",
+    "echo '<h1>Welcome to Meera Bakery</h1><p>Deployed on AWS EC2 with Terraform</p>' | sudo tee /var/www/html/index.html"
+  ]
+}

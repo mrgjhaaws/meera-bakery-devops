@@ -1,0 +1,22 @@
+# Lesson 12, panel 5 - "Deploy to EC2 (Example)" (copy into .github/workflows/ to use it).
+# Files in this examples/ folder are NOT run by GitHub - they are for learning.
+name: Deploy to EC2 using SSH
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd /var/www/meera-bakery
+            git pull origin main
+            pip install -r requirements.txt
+            sudo systemctl restart meera-app

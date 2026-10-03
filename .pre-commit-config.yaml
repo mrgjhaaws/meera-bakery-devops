@@ -1,0 +1,8 @@
+# Lesson 9 - stop secrets BEFORE they reach GitHub.
+# Setup:  pip install pre-commit && pre-commit install
+# (update "rev" to the latest gitleaks release when you set this up)
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.4
+    hooks:
+      - id: gitleaks

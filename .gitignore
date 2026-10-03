@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Secrets - NEVER commit these (Lesson 9 & 10)
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+.aws/
+
+# Terraform (Lesson 13)
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/crash.log
+terraform/*.tfplan
+# keep terraform/.terraform.lock.hcl committed
+
+# OS / editor
+.DS_Store
+Thumbs.db

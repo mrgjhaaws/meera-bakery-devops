@@ -1,0 +1,12 @@
+.git
+.github
+.venv
+__pycache__
+*.pyc
+.env
+.env.*
+docs
+images
+terraform
+tests
+scripts

@@ -1,0 +1,29 @@
+# Runs on every push and pull request: install -> test. (Lesson 12, "Run tests before deployment")
+name: CI - Test Meera's Bakery
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Run tests
+        run: python -m pytest -v
+
+      - name: Scan for accidentally committed AWS keys
+        run: python scripts/simple_secret_scan.py .
